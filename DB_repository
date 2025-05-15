@@ -1,0 +1,63 @@
+-- Crear la base de datos
+CREATE DATABASE ejemplo_finanzas;
+
+-- Usar la base de datos
+USE finanzas_R2;
+
+-- Crear la tabla con los campos especificados
+CREATE TABLE pagos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  client_id INT NOT NULL,
+  country VARCHAR(50) NOT NULL,
+  amount DECIMAL(10, 2) NOT NULL,
+  payment_date DATE NOT NULL,
+  recovery_channel VARCHAR(50),
+  status VARCHAR(20)
+);
+
+-- Insertar algunos datos de ejemplo
+INSERT INTO pagos (client_id, country, amount, payment_date, recovery_channel, status) VALUES
+(1, 'España', 150.00, '2025-05-10', 'Online', 'Pending'),
+(2, 'Argentina', 200.50, '2025-05-12', 'Phone', 'Completed'),
+(3, 'México', 350.75, '2025-05-13', 'Online', 'Failed'),
+(4, 'Chile', 120.00, '2025-05-14', 'In-Person', 'Pending'),
+(5, 'Perú', 500.00, '2025-05-15', 'Online', 'Completed');
+
+
+
+-- Usar la base de datos
+USE finanzas_R2;
+
+-- Insertando más ejemplos:
+INSERT INTO payments (client_id, country, amount, payment_date, recovery_channel, status) VALUES
+(6, 'Colombia', 250.00, '2025-05-16', 'Online', 'Pending'),
+(7, 'Venezuela', 180.50, '2025-05-16', 'Phone', 'Completed'),
+(8, 'Ecuador', 220.75, '2025-05-17', 'In-Person', 'Failed'),
+(9, 'Brasil', 430.00, '2025-05-18', 'Online', 'Pending'),
+(10, 'Chile', 330.00, '2025-05-19', 'Online', 'Completed'),
+(11, 'Argentina', 175.00, '2025-05-20', 'Online', 'Pending'),
+(12, 'España', 220.00, '2025-05-21', 'Phone', 'Completed'),
+(13, 'México', 300.50, '2025-05-22', 'In-Person', 'Pending'),
+(14, 'Perú', 120.75, '2025-05-23', 'Online', 'Failed'),
+(15, 'Chile', 400.00, '2025-05-24', 'Online', 'Completed'),
+(16, 'Brasil', 210.00, '2025-05-25', 'Phone', 'Pending'),
+(17, 'Venezuela', 185.50, '2025-05-26', 'In-Person', 'Failed'),
+(18, 'Ecuador', 250.75, '2025-05-27', 'Online', 'Pending'),
+(19, 'Colombia', 330.00, '2025-05-28', 'Online', 'Completed'),
+(20, 'Argentina', 195.00, '2025-05-29', 'Phone', 'Pending'),
+(21, 'España', 275.25, '2025-05-30', 'In-Person', 'Completed'),
+(22, 'México', 410.50, '2025-05-31', 'Online', 'Pending'),
+(23, 'Perú', 130.75, '2025-06-01', 'Online', 'Failed'),
+(24, 'Chile', 385.00, '2025-06-02', 'Online', 'Completed'),
+(25, 'Brasil', 290.00, '2025-06-03', 'Phone', 'Pending'),
+(26, 'Venezuela', 160.50, '2025-06-04', 'In-Person', 'Failed'),
+(27, 'Ecuador', 245.75, '2025-06-05', 'Online', 'Pending'),
+(28, 'Colombia', 355.00, '2025-06-06', 'Online', 'Completed'),
+(29, 'Argentina', 210.25, '2025-06-07', 'Phone', 'Pending'),
+(30, 'España', 290.50, '2025-06-08', 'In-Person', 'Failed');
+
+
+-- ACTUALIZANDO EL VALOR COMPLETED POR SUCCES
+UPDATE payments
+SET status = 'Success'
+WHERE status = 'Completed';
